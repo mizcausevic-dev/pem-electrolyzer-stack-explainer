@@ -4,7 +4,7 @@ import { LAST_FRAME } from '../engine/timeline';
 import { drawBackdrop, drawRegistration } from './background';
 import { drawBop } from './bop';
 import { drawBadges, drawBreadcrumb, drawFooter, drawHeader, drawLegend, drawLocator, drawScrims } from './hud';
-import { drawLabels } from './labels';
+import { HERO_CALLOUTS, drawCallouts, drawLabels } from './labels';
 import { drawMicro } from './micro';
 import { C, rgba } from './palette';
 import { drawChargePanel, drawEquationPanel, drawTemperaturePanel } from './panels';
@@ -78,11 +78,11 @@ export function renderHero(ctx: CanvasRenderingContext2D, scale: number): void {
   const lw = HERO_W;
   const lh = HERO_H;
   const f = 478;
-  const cam: Camera = { x: -38, y: -58, z: 8.2 };
+  const cam: Camera = { x: -96, y: -62, z: 7.8 };
   const st = frameState(f);
   ctx.setTransform(scale, 0, 0, scale, 0, 0);
   drawBackdrop(ctx, lw, lh);
-  drawWorld(ctx, f, { ...cam, x: cam.x - 52 }, st, scale, lw, lh);
+  drawWorld(ctx, f, cam, st, scale, lw, lh);
   ctx.setTransform(scale, 0, 0, scale, 0, 0);
 
   const g = ctx.createLinearGradient(0, 0, 980, 0);
@@ -91,6 +91,7 @@ export function renderHero(ctx: CanvasRenderingContext2D, scale: number): void {
   g.addColorStop(1, rgba(C.stage, 0));
   ctx.fillStyle = g;
   ctx.fillRect(0, 0, 980, lh);
+  drawCallouts(ctx, cam, f, st, HERO_CALLOUTS, lw, lh, 1.45);
 
   const x = 96;
   drawRich(ctx, 'GENERIC PEM · ANATOMY EXPLAINER · BUILT IN CODE', x, 210, { size: 20, family: MONO, weight: 600, color: C.cyan, letterSpacing: 2 });

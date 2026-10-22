@@ -183,7 +183,7 @@ function safeArea(cam: Camera, f: number, x0: number, y0: number, w: number, h: 
   return clamp(1 - pen / 28);
 }
 
-function drawLabel(ctx: CanvasRenderingContext2D, cam: Camera, f: number, st: FrameState, L: LabelSpec, lw: number, lh: number): void {
+function drawLabel(ctx: CanvasRenderingContext2D, cam: Camera, f: number, st: FrameState, L: LabelSpec, lw: number, lh: number, safe = true): void {
   const a = fade(f, ...L.win);
   if (a <= 0.01) return;
   const p = typeof L.at === 'function' ? L.at(f, st) : L.at;
@@ -207,7 +207,7 @@ function drawLabel(ctx: CanvasRenderingContext2D, cam: Camera, f: number, st: Fr
   const x0 = clamp(align === 'left' ? bx : align === 'right' ? bx - w : bx - w / 2, 24, lw - 24 - w);
   const y0 = by - h / 2;
 
-  const alpha = a * inside * safeArea(cam, f, x0, y0, w, h, lh);
+  const alpha = a * inside * (safe ? safeArea(cam, f, x0, y0, w, h, lh) : 1);
   if (alpha <= 0.01) return;
 
   ctx.save();
@@ -275,4 +275,23 @@ function drawBracket(ctx: CanvasRenderingContext2D, cam: Camera, f: number, B: B
 export function drawLabels(ctx: CanvasRenderingContext2D, cam: Camera, f: number, st: FrameState, lw: number, lh: number): void {
   for (const B of BRACKETS) drawBracket(ctx, cam, f, B, lw, lh);
   for (const L of LABELS) drawLabel(ctx, cam, f, st, L, lw, lh);
+}
+
+const ALWAYS: [number, number, number, number] = [-2, -1, Infinity, Infinity];
+
+/** Static callouts for the hero image: no video HUD, so no safe-area fade. */
+export const HERO_CALLOUTS: LabelSpec[] = [
+  { text: 'Outlet manifolds', sub: 'O_2 + water in front · H_2 behind the section plane', at: [8, -105], off: [-36, 84], win: ALWAYS, align: 'right', tone: 'cyan' },
+  { text: 'Anode channel', sub: 'water in, O_2 + water out', at: [mid('achan', 1), -58], off: [-22, 112], win: ALWAYS, align: 'right', tone: 'cyan' },
+  { text: 'Membrane (PEM)', sub: 'passes H^+ only', at: [mid('mem', 1), -58], off: [0, 192], win: ALWAYS, align: 'center' },
+  { text: 'Cathode channel', sub: 'H_2 out', at: [mid('cchan', 1), -58], off: [22, 112], win: ALWAYS, align: 'left', tone: 'cyan' },
+];
+
+/** Draws callouts `k`× larger while keeping every anchor pinned to its world point. */
+export function drawCallouts(ctx: CanvasRenderingContext2D, cam: Camera, f: number, st: FrameState, specs: LabelSpec[], lw: number, lh: number, k = 1): void {
+  ctx.save();
+  ctx.scale(k, k);
+  const scaled = { ...cam, z: cam.z / k };
+  for (const L of specs) drawLabel(ctx, scaled, f, st, L, lw / k, lh / k, false);
+  ctx.restore();
 }
