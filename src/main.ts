@@ -19,6 +19,7 @@ let frame = clampFrame(Number(params.get("frame") ?? 0));
 let playing = false;
 let lastTs = 0;
 let lastChapter = -1;
+let acc = 0;
 
 function draw() {
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -47,9 +48,13 @@ function loop(ts: number) {
   if (playing) {
     if (lastTs) {
       const speed = Number(speedSel.value || 1);
-      frame = clampFrame(frame + ((ts - lastTs) / 1000) * FPS * speed);
-      if (frame >= TOTAL_FRAMES - 1) setPlaying(false);
-      draw();
+      acc += ((ts - lastTs) / 1000) * FPS * speed;
+      const step = Math.floor(acc); acc -= step;
+      if (step > 0) {
+        frame = clampFrame(frame + step);
+        if (frame >= TOTAL_FRAMES - 1) setPlaying(false);
+        draw();
+      }
     }
     lastTs = ts;
     if (playing) requestAnimationFrame(loop); else lastTs = 0;

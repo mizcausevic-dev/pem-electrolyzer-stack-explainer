@@ -58,10 +58,13 @@ The timeline engine (`src/timeline.ts`: chapters, eased camera keys, causal ribb
 
 ## Deploy
 
-GitHub Pages serves the `gh-pages` branch. Rebuild and republish:
+GitHub Pages serves the `gh-pages` branch. `.github/workflows/deploy.yml` builds on every push to `main` and publishes `dist/` to `gh-pages` via `peaceiris/actions-gh-pages` using `GITHUB_TOKEN`. If your repo provides a secret named `crsr-cloud` for `gh`, the workflow still uses the built-in token for Pages publishing, which is the supported path for branch deploys. No secret value is stored in this repo.
+
+One-time setting in the real GitHub repo: **Settings → Pages → Source: Deploy from a branch → `gh-pages` / `/ (root)`**.
+
+Manual fallback:
 
 ```bash
 npm run build
-git -C . worktree add /tmp/gh-pages gh-pages   # first time: orphan branch with dist contents
-cp -r dist/. /tmp/gh-pages/ && cd /tmp/gh-pages && git add -A && git commit -m "Deploy" && git push
+npx gh-pages -d dist
 ```
