@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <video:video>
+      <video:thumbnail_loc>https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/media/pem-electrolyzer-og-Cursor.png</video:thumbnail_loc>
+      <video:title>PEM electrolyzer stack: an anatomy explainer (generic, illustrative)</video:title>
+      <video:description>A 34-second, code-driven anatomy explainer of a generic PEM electrolyzer stack: membrane electrode assembly and plates, water feed, gas evolution, cooling, and balance of plant.</video:description>
+      <video:content_loc>https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/media/pem-electrolyzer-stack-explainer-Cursor.mp4</video:content_loc>
+      <video:duration>34</video:duration>
+    </video:video>
+  </url>
+</urlset>

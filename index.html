@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PEM Electrolyzer Stack, Explained in 34 Seconds · Anatomy Explainer</title>
+    <meta name="description" content="%DESCRIPTION%" />
+    <link rel="canonical" href="%SITE_URL%" />
+    <meta name="theme-color" content="#0B1019" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+
+    <meta property="og:type" content="video.other" />
+    <meta property="og:title" content="Inside a PEM electrolyzer stack: a 34-second anatomy explainer" />
+    <meta property="og:description" content="%DESCRIPTION%" />
+    <meta property="og:url" content="%SITE_URL%" />
+    <meta property="og:image" content="%SITE_URL%%OG_FILE%" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Section view of a generic PEM electrolyzer stack with cyan water and gas paths, gold electron paths, and the title Inside a PEM electrolyzer stack." />
+    <meta property="og:video" content="%SITE_URL%%VIDEO_FILE%" />
+    <meta property="og:video:type" content="video/mp4" />
+    <meta property="og:video:width" content="1920" />
+    <meta property="og:video:height" content="1080" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Inside a PEM electrolyzer stack: a 34-second anatomy explainer" />
+    <meta name="twitter:description" content="%DESCRIPTION%" />
+    <meta name="twitter:image" content="%SITE_URL%%OG_FILE%" />
+    <!--JSONLD-->
+  </head>
+  <body>
+    <a class="skip" href="#player">Skip to the explainer</a>
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="PEM Stack Explainer home">
+        <svg viewBox="0 0 32 32" aria-hidden="true" width="26" height="26">
+          <rect x="3" y="5" width="4" height="22" rx="1" fill="#4B5D78" />
+          <rect x="25" y="5" width="4" height="22" rx="1" fill="#4B5D78" />
+          <rect x="10" y="7" width="2" height="18" fill="#00E5FF" />
+          <rect x="15" y="7" width="2" height="18" fill="#FFD166" />
+          <rect x="20" y="7" width="2" height="18" fill="#9D4EDD" />
+        </svg>
+        <span>PEM Stack Explainer</span>
+      </a>
+      <nav aria-label="Sections">
+        <a href="#player">Watch</a>
+        <a href="#chapters">Chapters</a>
+        <a href="#grammar">Color key</a>
+        <a href="#accuracy">Accuracy</a>
+        <a href="#transcript">Transcript</a>
+        <a href="#sources">Sources</a>
+        <a class="nav-cta" href="%REPO_URL%" rel="noopener">Source code</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="intro">
+        <p class="eyebrow">Hydrogen &amp; fuel cell systems · motion explainer</p>
+        <h1>How a PEM electrolyzer stack works, frame by frame</h1>
+        <p class="lead">
+          A 34-second anatomy explainer of a generic proton exchange membrane (PEM) electrolyzer stack. It moves from the plates and membrane electrode assembly to
+          water feed, gas evolution, cooling, and the balance of plant, and every one of its 1,020 frames is computed from the frame number alone.
+        </p>
+      </section>
+
+      <section id="player" class="player-section" aria-label="Animated explainer">
+        <div class="player glass">
+          <div class="stage" id="stage">
+            <canvas id="canvas" width="1920" height="1080" role="img" aria-label="Animated cutaway of a generic PEM electrolyzer stack. Captions and a full transcript are available below."></canvas>
+            <div class="stage-state" id="stage-state" role="status" aria-live="polite">
+              <span class="spinner" aria-hidden="true"></span>
+              <span id="stage-state-text">Loading fonts and preparing frame 0…</span>
+            </div>
+            <button type="button" class="stage-play" id="stage-play" aria-label="Play explainer" hidden>
+              <svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
+            </button>
+          </div>
+
+          <div class="controls" role="group" aria-label="Playback controls">
+            <button type="button" class="ctl" id="btn-play" aria-label="Play" title="Play / pause (Space)">
+              <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+              <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" /></svg>
+            </button>
+            <button type="button" class="ctl" id="btn-restart" aria-label="Restart" title="Restart (Home)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z" /></svg>
+            </button>
+            <button type="button" class="ctl" id="btn-back" aria-label="Previous frame" title="Previous frame (←, Shift+← for 1 s)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h2v12H6zM9.5 12 18 18V6z" /></svg>
+            </button>
+            <button type="button" class="ctl" id="btn-fwd" aria-label="Next frame" title="Next frame (→, Shift+→ for 1 s)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 6h2v12h-2zM6 18l8.5-6L6 6z" /></svg>
+            </button>
+            <div class="scrub">
+              <input id="scrub" type="range" min="0" max="1019" step="1" value="0" aria-label="Frame" />
+              <div class="scrub-ticks" id="scrub-ticks" aria-hidden="true"></div>
+            </div>
+            <output class="timecode" id="timecode" aria-live="off">00:00.00 · F 0000</output>
+            <label class="speed">
+              <span class="sr-only">Playback speed</span>
+              <select id="speed" aria-label="Playback speed">
+                <option value="0.25">0.25×</option>
+                <option value="0.5">0.5×</option>
+                <option value="1" selected>1×</option>
+              </select>
+            </label>
+            <button type="button" class="ctl" id="btn-full" aria-label="Fullscreen" title="Fullscreen (F)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v2H6v4H4zm10 0h6v6h-2V6h-4zM4 14h2v4h4v2H4zm14 0h2v6h-6v-2h4z" /></svg>
+            </button>
+          </div>
+          <ol class="chapter-strip" id="chapter-strip" aria-label="Jump to chapter"></ol>
+          <p class="kbd-hint">Keys: <kbd>Space</kbd> play/pause · <kbd>←</kbd><kbd>→</kbd> frame step · <kbd>1</kbd>–<kbd>5</kbd> chapters · <kbd>F</kbd> fullscreen</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn primary magnetic" href="./%VIDEO_FILE%" download>Download the MP4 (1080p, 34 s)</a>
+          <a class="btn" href="%REPO_URL%" rel="noopener">View the renderer on GitHub</a>
+          <a class="btn ghost" href="#how">How it is built</a>
+        </div>
+      </section>
+
+      <section id="chapters" class="section">
+        <h2>Five chapters, one causal chain</h2>
+        <p class="section-lead">Each camera move keeps the previous stage on screen, so you can see what causes what: water arrives, power splits it, gas leaves, heat follows, and the plant supports all of it.</p>
+        <ol class="chapters">
+          <!--CHAPTERS-->
+        </ol>
+      </section>
+
+      <section id="grammar" class="section">
+        <h2>How to read the colors and shapes</h2>
+        <p class="section-lead">The three accents are explanatory overlays, not literal light or emission. They mark roles, so the same color means the same job at every scale.</p>
+        <div class="grammar-grid">
+          <div class="key reveal spotlight"><span class="swatch" style="--c: #00e5ff"></span><h3>Cyan · primary pathway</h3><p>Water, protons, and product gas: the material that moves through the stack.</p></div>
+          <div class="key reveal spotlight"><span class="swatch" style="--c: #ffd166"></span><h3>Gold · energy and actuation</h3><p>DC power, electrons, heat, and actuators such as the circulation pump.</p></div>
+          <div class="key reveal spotlight"><span class="swatch" style="--c: #9d4edd"></span><h3>Violet · sensing and state change</h3><p>Gas formation events, temperature states, sensors, and control signals.</p></div>
+          <div class="key reveal spotlight"><span class="swatch hw"></span><h3>Solid fills · hardware</h3><p>Plates, layers, and equipment. Cut solids in the section view carry diagonal hatching.</p></div>
+          <div class="key reveal spotlight"><span class="swatch field"></span><h3>Translucent contours · fields</h3><p>The heat field in the cooling chapter: dashed isotherms and gradients, not objects.</p></div>
+          <div class="key reveal spotlight"><span class="swatch math"></span><h3>Grid panels · math and diagrams</h3><p>Equations, the charge-path schematic, and the qualitative temperature diagram.</p></div>
+        </div>
+      </section>
+
+      <section id="accuracy" class="section">
+        <h2>Accuracy and review status</h2>
+        <div class="status-banner">
+          <strong>Review status:</strong> consolidated working brief, not a certified engineering reference. Verify against the sources below before publication or technical use.
+        </div>
+        <div class="accuracy-grid">
+          <div class="reveal">
+            <h3>Sourced on screen</h3>
+            <ul>
+              <li>Anode and cathode half-reactions and the net reaction (U.S. DOE).</li>
+              <li>The membrane passes protons; electrons take the external circuit (U.S. DOE).</li>
+              <li>Typical PEM operating range of about 70–90 °C, shown as a band, not a value (U.S. DOE).</li>
+              <li>Cells electrically in series, water and gas in parallel; end plates; layer materials described as “typical” (NREL).</li>
+              <li>Balance-of-plant blocks: transformer and rectifier, deionization, tank, radiator-type cooling, hydrogen separation and drying (NREL).</li>
+            </ul>
+          </div>
+          <div class="reveal">
+            <h3>Illustrative by design</h3>
+            <ul>
+              <li>Generic PEM stack, not any product. Six cells shown; real stacks vary.</li>
+              <li>Not to scale. Layer thicknesses are exaggerated so each layer is legible.</li>
+              <li>Molecular scale is schematic and shown in slow motion; flow speeds are illustrative.</li>
+              <li>The heat field and temperature diagram are qualitative. No values are implied.</li>
+              <li>No efficiency, output, cost, or lifetime claims. No invented specifications.</li>
+              <li>Camera, palette, cutaways, and timing are original illustrative directions.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="transcript" class="section">
+        <h2>Transcript</h2>
+        <p class="section-lead">The captions burned into the video, with timecodes. Select a timecode to jump there.</p>
+        <div class="transcript">
+          <!--TRANSCRIPT-->
+        </div>
+      </section>
+
+      <section id="how" class="section">
+        <h2>How it is built</h2>
+        <div class="how-grid">
+          <div class="reveal">
+            <h3>Deterministic timeline</h3>
+            <p>The renderer is a pure function of the frame index. Camera keys, fades, bubble emitters, and molecular cycles derive from the frame number and a seeded hash. There is no wall clock and no <code>Math.random</code>, so frame 612 renders identically in the browser, in the video export, and on every replay.</p>
+          </div>
+          <div class="reveal">
+            <h3>One world, many scales</h3>
+            <p>Stack, cell, catalyst interface, and plant share one coordinate system. Zoom interpolates in log space about a fixed point, so macro-to-micro dives do not swing sideways. Detail fades in by zoom level, and line widths stay constant on screen.</p>
+          </div>
+          <div class="reveal">
+            <h3>Canvas 2D, TypeScript, Vite</h3>
+            <p>No animation library and no 3D engine. Headless Chrome renders each frame at 1920×1080 and ffmpeg encodes the 1,020 frames to H.264 at 30 fps. The same code produces the hero image.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="sources" class="section">
+        <h2>Sources</h2>
+        <ul class="sources">
+          <!--SOURCES-->
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Generic PEM electrolyzer explainer · illustrative · not a certified engineering reference.</p>
+      <p>Built by <a href="https://kineticgain.com" rel="noopener">Kinetic Gain LLC</a> · <a href="%REPO_URL%" rel="noopener">Source on GitHub</a></p>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
