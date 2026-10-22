@@ -1,116 +1,315 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>PEM Electrolyzer Stack, Explained in 34 Seconds | Anatomy Motion Explainer</title>
-<meta name="description" content="A code-driven, frame-accurate anatomy explainer of a generic PEM electrolyzer stack: MEA and plates, water feed, gas evolution, cooling, and balance of plant. 1,020 deterministic frames at 30 fps. No efficiency claims, no invented specs." />
-<meta name="author" content="Mirza Causevic, Kinetic Gain LLC" />
-<meta name="robots" content="index, follow" />
-<link rel="canonical" href="https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="PEM Electrolyzer Stack, Explained in 34 Seconds" />
-<meta property="og:description" content="Water in. Protons across. Hydrogen out. A deterministic, code-rendered walk through a generic PEM electrolyzer stack and its balance of plant." />
-<meta property="og:url" content="https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/" />
-<meta property="og:image" content="https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/hero-Cursor.png" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="PEM Electrolyzer Stack, Explained in 34 Seconds" />
-<meta name="twitter:description" content="1,020 frames. 5 chapters. One membrane doing the sorting. Code-rendered, scrub-able, frame-accurate." />
-<meta name="twitter:image" content="https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/hero-Cursor.png" />
-<meta name="theme-color" content="#0B1019" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B1019'/%3E%3Crect x='14' y='5' width='4' height='22' rx='2' fill='%23E8E4D8'/%3E%3Ccircle cx='8' cy='20' r='3' fill='none' stroke='%2300E5FF' stroke-width='2'/%3E%3Ccircle cx='24' cy='12' r='3' fill='none' stroke='%2300E5FF' stroke-width='2'/%3E%3C/svg%3E" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"PEM Electrolyzer Stack, Explained in 34 Seconds","description":"A code-driven anatomy motion explainer of a generic PEM electrolyzer stack: MEA, water feed, gas evolution, cooling, and balance of plant.","author":{"@type":"Person","name":"Mirza Causevic"},"publisher":{"@type":"Organization","name":"Kinetic Gain LLC","url":"https://kineticgain.com"},"mainEntityOfPage":"https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/","image":"https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/hero-Cursor.png","citation":"https://www.energy.gov/eere/fuelcells/hydrogen-production"}
-</script>
-  <script type="module" crossorigin src="./assets/index-C4otWMLE.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-L_57TCaj.css">
-</head>
-<body>
-<header class="top">
-  <a class="brand" href="./">KINETIC GAIN <span>· HYDROGEN &amp; FUEL CELL SYSTEMS</span></a>
-  <nav><a href="#explainer">Explainer</a><a href="#chapters-list">Chapters</a><a href="#accuracy">Accuracy</a><a href="./article-Cursor.html">Article</a></nav>
-</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PEM Electrolyzer Stack, Explained in 34 Seconds · Anatomy Explainer</title>
+    <meta name="description" content="A 34-second, code-driven anatomy explainer of a generic PEM electrolyzer stack: membrane electrode assembly and plates, water feed, gas evolution, cooling, and balance of plant. Illustrative, not to scale." />
+    <link rel="canonical" href="https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/" />
+    <meta name="theme-color" content="#0B1019" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
 
-<main>
-  <section class="hero">
-    <p class="kicker">CODE-DRIVEN MOTION EXPLAINER · 34S · 30 FPS · 1,020 FRAMES</p>
-    <h1>PEM electrolyzer stack,<br/>explained in 34 seconds.</h1>
-    <p class="lede">Water in. Protons across a membrane. Electrons forced the long way around. Hydrogen out. Every frame below is rendered by code from its frame number alone, so you can scrub it, pause it, and export any frame as an image.</p>
-    <div class="hero-meta">
-      <span><strong>Product</strong> Frame-accurate anatomy explainer</span>
-      <span><strong>For</strong> Engineers, students, hydrogen-curious operators</span>
-      <span><strong>Scope</strong> Generic PEM. No efficiency claims.</span>
-    </div>
-  </section>
+    <meta property="og:type" content="video.other" />
+    <meta property="og:title" content="Inside a PEM electrolyzer stack: a 34-second anatomy explainer" />
+    <meta property="og:description" content="A 34-second, code-driven anatomy explainer of a generic PEM electrolyzer stack: membrane electrode assembly and plates, water feed, gas evolution, cooling, and balance of plant. Illustrative, not to scale." />
+    <meta property="og:url" content="https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/" />
+    <meta property="og:image" content="https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/media/pem-electrolyzer-og-Cursor.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Section view of a generic PEM electrolyzer stack with cyan water and gas paths, gold electron paths, and the title Inside a PEM electrolyzer stack." />
+    <meta property="og:video" content="https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/media/pem-electrolyzer-stack-explainer-Cursor.mp4" />
+    <meta property="og:video:type" content="video/mp4" />
+    <meta property="og:video:width" content="1920" />
+    <meta property="og:video:height" content="1080" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Inside a PEM electrolyzer stack: a 34-second anatomy explainer" />
+    <meta name="twitter:description" content="A 34-second, code-driven anatomy explainer of a generic PEM electrolyzer stack: membrane electrode assembly and plates, water feed, gas evolution, cooling, and balance of plant. Illustrative, not to scale." />
+    <meta name="twitter:image" content="https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/media/pem-electrolyzer-og-Cursor.png" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"PEM electrolyzer stack: an anatomy explainer (generic, illustrative)","description":"A 34-second, code-driven anatomy explainer of a generic PEM electrolyzer stack: membrane electrode assembly and plates, water feed, gas evolution, cooling, and balance of plant. Illustrative, not to scale.","thumbnailUrl":["https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/media/pem-electrolyzer-hero-Cursor.png","https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/media/pem-electrolyzer-og-Cursor.png"],"uploadDate":"2026-10-22","duration":"PT34S","contentUrl":"https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/media/pem-electrolyzer-stack-explainer-Cursor.mp4","embedUrl":"https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/","inLanguage":"en","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Kinetic Gain LLC","url":"https://kineticgain.com"},"citation":["https://www.energy.gov/eere/fuelcells/hydrogen-production-electrolysis","https://www.energy.gov/eere/fuelcells/hydrogen-production","https://docs.nlr.gov/docs/fy19osti/72740.pdf","https://docs.nlr.gov/docs/fy24osti/87625.pdf"],"hasPart":[{"@type":"Clip","name":"Reveal MEA & plates","startOffset":0,"endOffset":5,"url":"https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/?t=0"},{"@type":"Clip","name":"Water feed","startOffset":5,"endOffset":10,"url":"https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/?t=5"},{"@type":"Clip","name":"Gas evolution","startOffset":10,"endOffset":17,"url":"https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/?t=10"},{"@type":"Clip","name":"Cooling","startOffset":17,"endOffset":25,"url":"https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/?t=17"},{"@type":"Clip","name":"Balance of plant","startOffset":25,"endOffset":34,"url":"https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/?t=25"}],"transcript":"A PEM stack repeats one cell many times, clamped between two end plates. Section A–A cuts through the flow channels. Nothing is taken apart. Each cell: bipolar plates, porous transport layers, and a catalyst-coated membrane. Deionized water enters through the anode inlet manifold. The manifold feeds every cell’s anode channel in parallel. Water spreads through the porous transport layer to the anode catalyst. DC voltage across the cell supplies the energy to split water. At the anode catalyst, water splits into O₂, protons, and electrons. Protons cross the membrane. Electrons take the external circuit. They recombine as H₂. Bubbles detach and ride the channels to the outlet manifolds. Cell losses appear as heat, concentrated in the membrane electrode assembly. Most of the water is not consumed. It circulates and carries the heat out. Outside the stack, a heat exchanger rejects that heat and the cooled water returns. The stack is one block in a larger system: the balance of plant. Power: AC is transformed and rectified to DC for the stack. Water: filtered, deionized, circulated, and separated from O₂. Hydrogen: separated from water, dried, then delivered. Sensors and controls close the loop. Complete system view. Generic PEM, simplified for explanation."}</script>
+    <script type="module" crossorigin src="./assets/index-CN6klq2D.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Cb81kk7W.css">
+  </head>
+  <body>
+    <a class="skip" href="#player">Skip to the explainer</a>
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="PEM Stack Explainer home">
+        <svg viewBox="0 0 32 32" aria-hidden="true" width="26" height="26">
+          <rect x="3" y="5" width="4" height="22" rx="1" fill="#4B5D78" />
+          <rect x="25" y="5" width="4" height="22" rx="1" fill="#4B5D78" />
+          <rect x="10" y="7" width="2" height="18" fill="#00E5FF" />
+          <rect x="15" y="7" width="2" height="18" fill="#FFD166" />
+          <rect x="20" y="7" width="2" height="18" fill="#9D4EDD" />
+        </svg>
+        <span>PEM Stack Explainer</span>
+      </a>
+      <nav aria-label="Sections">
+        <a href="#player">Watch</a>
+        <a href="#chapters">Chapters</a>
+        <a href="#grammar">Color key</a>
+        <a href="#accuracy">Accuracy</a>
+        <a href="#transcript">Transcript</a>
+        <a href="#sources">Sources</a>
+        <a class="nav-cta" href="https://github.com/mizcausevic-dev/pem-electrolyzer-stack-explainer" rel="noopener">Source code</a>
+      </nav>
+    </header>
 
-  <section id="explainer" class="stage-wrap">
-    <canvas id="stage" width="1280" height="720" aria-label="Animated sectional diagram of a PEM electrolyzer stack"></canvas>
-    <div class="controls" role="group" aria-label="Playback controls">
-      <button id="play" aria-pressed="false">▶ Play</button>
-      <button id="restart">↺ Restart</button>
-      <button id="prev" title="Previous frame (←)">‹ Frame</button>
-      <button id="next" title="Next frame (→)">Frame ›</button>
-      <input id="scrub" type="range" min="0" max="1019" value="0" step="1" aria-label="Scrub frames 0 to 1019" />
-      <select id="speed" aria-label="Playback speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select>
-      <button id="exportPng">Export PNG</button>
-      <output id="frameOut">00:00:00 · frame 0 / 1019</output>
-    </div>
-    <div id="chapters" class="chapters" role="group" aria-label="Chapters"></div>
-    <div class="now"><h2 id="chapterOut">Reveal: MEA and plates</h2><p id="narration"></p></div>
-  </section>
+    <main>
+      <section class="intro">
+        <p class="eyebrow">Hydrogen &amp; fuel cell systems · motion explainer</p>
+        <h1>How a PEM electrolyzer stack works, frame by frame</h1>
+        <p class="lead">
+          A 34-second anatomy explainer of a generic proton exchange membrane (PEM) electrolyzer stack. It moves from the plates and membrane electrode assembly to
+          water feed, gas evolution, cooling, and the balance of plant, and every one of its 1,020 frames is computed from the frame number alone.
+        </p>
+      </section>
 
-  <section id="chapters-list" class="grid">
-    <div class="panel span2">
-      <h2>Chapter map</h2>
-      <ol id="narrateList" class="narrate"></ol>
-    </div>
-    <div class="panel">
-      <h2>How to read the colors</h2>
-      <ul class="legend">
-        <li><i style="--c:#00E5FF"></i><strong>Cyan #00E5FF</strong><span>Primary pathway. Water, protons, gases, coolant.</span></li>
-        <li><i style="--c:#FFD166"></i><strong>Gold #FFD166</strong><span>Actuation and energy. DC power, electrons, compression, heat.</span></li>
-        <li><i style="--c:#9D4EDD"></i><strong>Violet #9D4EDD</strong><span>Sensing and state. Membrane, temperature sensors, control.</span></li>
-        <li><i style="--c:#344257"></i><strong>Slate #344257</strong><span>Structural hardware on the #0B1019 dark technical stage.</span></li>
-      </ul>
-      <p class="fine">These are explanatory colors, not literal emission. Materials stay plausible. Fields, flows, and math are labeled as diagrams where they appear.</p>
-    </div>
-    <div class="panel" id="accuracy">
-      <h2>Accuracy notes</h2>
-      <ul class="ticks">
-        <li>Generic PEM architecture only. Not a commercial design.</li>
-        <li>Half-reactions: anode 2H<sub>2</sub>O → O<sub>2</sub> + 4H<sup>+</sup> + 4e<sup>−</sup>; cathode 4H<sup>+</sup> + 4e<sup>−</sup> → 2H<sub>2</sub>.</li>
-        <li>Bubble counts follow the 2:1 H<sub>2</sub>:O<sub>2</sub> mole ratio in those equations.</li>
-        <li>Scale changes, slow motion, and time compression are labeled on screen.</li>
-        <li>No efficiency claims. No invented specifications. No measured data is presented as measured.</li>
-        <li>Process reference: U.S. DOE, Hydrogen Production / Electrolysis (<a href="https://www.energy.gov/eere/fuelcells/hydrogen-production" rel="noopener">energy.gov</a>).</li>
-      </ul>
-    </div>
-    <div class="panel">
-      <h2>Deterministic by construction</h2>
-      <p>Playback does not accumulate state. The renderer is a pure function, <code>render(frame)</code>, with seeded hashes instead of <code>Math.random()</code>. Frame 812 looks identical today, tomorrow, and on your machine.</p>
-      <p>Deep-link any moment with <code>?frame=812</code>. Step with arrow keys. Shift + arrow jumps one second.</p>
-      <p><a class="cta" href="./article-Cursor.html">Read the full article →</a></p>
-    </div>
-    <div class="panel span2">
-      <h2>The 10-question product frame</h2>
-      <ol class="ten">
-        <li><strong>What:</strong> a scrub-able, code-rendered anatomy explainer of a generic PEM electrolyzer stack.</li>
-        <li><strong>Who:</strong> engineers evaluating hydrogen systems, students, technical buyers, and content teams who need a correct visual.</li>
-        <li><strong>Why it wins:</strong> frame accuracy plus labeled scale and time distortions. Most explainers hide those. This one prints them on screen.</li>
-        <li><strong>Structure:</strong> five chapters, one causal chain, a persistent ribbon so the previous stage never leaves the frame.</li>
-        <li><strong>Discovery:</strong> search and social via the article, the hero image, and frame deep-links that land on an exact moment.</li>
-        <li><strong>Engagement:</strong> scrub, step, chapter jump, PNG export. The reader drives the section view.</li>
-        <li><strong>Conversion:</strong> the article and repo carry the consulting and explainer-production offer. No fake metrics, no gated fluff.</li>
-        <li><strong>Money:</strong> reusable explainer engine for client verticals. Same timeline code, new subject data.</li>
-        <li><strong>Launch:</strong> GitHub Pages from the <code>gh-pages</code> branch, repo public, article cross-posted to Medium.</li>
-        <li><strong>Improve:</strong> add narration audio, WebM export, and a second subject (fuel cell, reverse operation) on the same engine.</li>
-      </ol>
-    </div>
-  </section>
-</main>
-<footer>
-  <span>Kinetic Gain LLC · Built in code. Verify subject-specific details before publication. Working explainer, not a certified engineering reference.</span>
-  <span>DOE reference: <a href="https://www.energy.gov/eere/fuelcells/hydrogen-production" rel="noopener">energy.gov/eere/fuelcells/hydrogen-production</a></span>
-</footer>
-</body>
+      <section id="player" class="player-section" aria-label="Animated explainer">
+        <div class="player glass">
+          <div class="stage" id="stage">
+            <canvas id="canvas" width="1920" height="1080" role="img" aria-label="Animated cutaway of a generic PEM electrolyzer stack. Captions and a full transcript are available below."></canvas>
+            <div class="stage-state" id="stage-state" role="status" aria-live="polite">
+              <span class="spinner" aria-hidden="true"></span>
+              <span id="stage-state-text">Loading fonts and preparing frame 0…</span>
+            </div>
+            <button type="button" class="stage-play" id="stage-play" aria-label="Play explainer" hidden>
+              <svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
+            </button>
+          </div>
+
+          <div class="controls" role="group" aria-label="Playback controls">
+            <button type="button" class="ctl" id="btn-play" aria-label="Play" title="Play / pause (Space)">
+              <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+              <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" /></svg>
+            </button>
+            <button type="button" class="ctl" id="btn-restart" aria-label="Restart" title="Restart (Home)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z" /></svg>
+            </button>
+            <button type="button" class="ctl" id="btn-back" aria-label="Previous frame" title="Previous frame (←, Shift+← for 1 s)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h2v12H6zM9.5 12 18 18V6z" /></svg>
+            </button>
+            <button type="button" class="ctl" id="btn-fwd" aria-label="Next frame" title="Next frame (→, Shift+→ for 1 s)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 6h2v12h-2zM6 18l8.5-6L6 6z" /></svg>
+            </button>
+            <div class="scrub">
+              <input id="scrub" type="range" min="0" max="1019" step="1" value="0" aria-label="Frame" />
+              <div class="scrub-ticks" id="scrub-ticks" aria-hidden="true"></div>
+            </div>
+            <output class="timecode" id="timecode" aria-live="off">00:00.00 · F 0000</output>
+            <label class="speed">
+              <span class="sr-only">Playback speed</span>
+              <select id="speed" aria-label="Playback speed">
+                <option value="0.25">0.25×</option>
+                <option value="0.5">0.5×</option>
+                <option value="1" selected>1×</option>
+              </select>
+            </label>
+            <button type="button" class="ctl" id="btn-full" aria-label="Fullscreen" title="Fullscreen (F)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v2H6v4H4zm10 0h6v6h-2V6h-4zM4 14h2v4h4v2H4zm14 0h2v6h-6v-2h4z" /></svg>
+            </button>
+          </div>
+          <ol class="chapter-strip" id="chapter-strip" aria-label="Jump to chapter"></ol>
+          <p class="kbd-hint">Keys: <kbd>Space</kbd> play/pause · <kbd>←</kbd><kbd>→</kbd> frame step · <kbd>1</kbd>–<kbd>5</kbd> chapters · <kbd>F</kbd> fullscreen</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn primary magnetic" href="./media/pem-electrolyzer-stack-explainer-Cursor.mp4" download>Download the MP4 (1080p, 34 s)</a>
+          <a class="btn" href="https://github.com/mizcausevic-dev/pem-electrolyzer-stack-explainer" rel="noopener">View the renderer on GitHub</a>
+          <a class="btn ghost" href="#how">How it is built</a>
+        </div>
+      </section>
+
+      <section id="chapters" class="section">
+        <h2>Five chapters, one causal chain</h2>
+        <p class="section-lead">Each camera move keeps the previous stage on screen, so you can see what causes what: water arrives, power splits it, gas leaves, heat follows, and the plant supports all of it.</p>
+        <ol class="chapters">
+          
+          <li class="chapter-card reveal" data-start="0">
+            <button type="button" class="chapter-jump" data-frame="0" aria-label="Play chapter 1: Reveal MEA &amp; plates">
+              <span class="chapter-num">01</span>
+              <span class="chapter-time">0:00–0:05 · frames 0–149</span>
+            </button>
+            <h3>Reveal MEA &amp; plates</h3>
+            <p>An exterior view of a generic stack, then section A–A sweeps down through the flow channels. The camera dives from stack scale to one repeating cell: bipolar plate, anode flow channel, porous transport layer, catalyst-coated membrane, gas diffusion layer, and cathode flow channel. Layer thicknesses are exaggerated so each one is readable.</p>
+          </li>
+          <li class="chapter-card reveal" data-start="150">
+            <button type="button" class="chapter-jump" data-frame="150" aria-label="Play chapter 2: Water feed">
+              <span class="chapter-num">02</span>
+              <span class="chapter-time">0:05–0:10 · frames 150–299</span>
+            </button>
+            <h3>Water feed</h3>
+            <p>Deionized water enters the anode inlet manifold, which feeds every cell in parallel. Water rises through each anode channel and wets the porous transport layer until it reaches the anode catalyst. The cathode side has no liquid feed in this generic configuration.</p>
+          </li>
+          <li class="chapter-card reveal" data-start="300">
+            <button type="button" class="chapter-jump" data-frame="300" aria-label="Play chapter 3: Gas evolution">
+              <span class="chapter-num">03</span>
+              <span class="chapter-time">0:10–0:17 · frames 300–509</span>
+            </button>
+            <h3>Gas evolution</h3>
+            <p>DC power turns on. At molecular scale, in slow motion, water splits at the anode catalyst into oxygen, protons, and electrons. Protons cross the membrane; electrons take the external circuit; they recombine as hydrogen at the cathode. Back at cell scale, oxygen leaves with the excess water and hydrogen leaves through its own manifold.</p>
+          </li>
+          <li class="chapter-card reveal" data-start="510">
+            <button type="button" class="chapter-jump" data-frame="510" aria-label="Play chapter 4: Cooling">
+              <span class="chapter-num">04</span>
+              <span class="chapter-time">0:17–0:25 · frames 510–749</span>
+            </button>
+            <h3>Cooling</h3>
+            <p>Cell losses appear as heat, concentrated in the membrane electrode assembly. Most of the circulating water is not consumed, so it carries that heat out of the stack. A qualitative diagram shows water temperature rising along a channel, and the camera pulls back to the loop: tank, pump, heat exchanger, and return.</p>
+          </li>
+          <li class="chapter-card reveal" data-start="750">
+            <button type="button" class="chapter-jump" data-frame="750" aria-label="Play chapter 5: Balance of plant">
+              <span class="chapter-num">05</span>
+              <span class="chapter-time">0:25–0:34 · frames 750–1019</span>
+            </button>
+            <h3>Balance of plant</h3>
+            <p>The stack becomes one block in the balance of plant: AC power is transformed and rectified to DC; feed water is filtered and deionized; a tank separates oxygen from the circulating water; hydrogen is separated from water, dried, and delivered; sensors and controls close the loop. The view holds on the complete system.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section id="grammar" class="section">
+        <h2>How to read the colors and shapes</h2>
+        <p class="section-lead">The three accents are explanatory overlays, not literal light or emission. They mark roles, so the same color means the same job at every scale.</p>
+        <div class="grammar-grid">
+          <div class="key reveal spotlight"><span class="swatch" style="--c: #00e5ff"></span><h3>Cyan · primary pathway</h3><p>Water, protons, and product gas: the material that moves through the stack.</p></div>
+          <div class="key reveal spotlight"><span class="swatch" style="--c: #ffd166"></span><h3>Gold · energy and actuation</h3><p>DC power, electrons, heat, and actuators such as the circulation pump.</p></div>
+          <div class="key reveal spotlight"><span class="swatch" style="--c: #9d4edd"></span><h3>Violet · sensing and state change</h3><p>Gas formation events, temperature states, sensors, and control signals.</p></div>
+          <div class="key reveal spotlight"><span class="swatch hw"></span><h3>Solid fills · hardware</h3><p>Plates, layers, and equipment. Cut solids in the section view carry diagonal hatching.</p></div>
+          <div class="key reveal spotlight"><span class="swatch field"></span><h3>Translucent contours · fields</h3><p>The heat field in the cooling chapter: dashed isotherms and gradients, not objects.</p></div>
+          <div class="key reveal spotlight"><span class="swatch math"></span><h3>Grid panels · math and diagrams</h3><p>Equations, the charge-path schematic, and the qualitative temperature diagram.</p></div>
+        </div>
+      </section>
+
+      <section id="accuracy" class="section">
+        <h2>Accuracy and review status</h2>
+        <div class="status-banner">
+          <strong>Review status:</strong> consolidated working brief, not a certified engineering reference. Verify against the sources below before publication or technical use.
+        </div>
+        <div class="accuracy-grid">
+          <div class="reveal">
+            <h3>Sourced on screen</h3>
+            <ul>
+              <li>Anode and cathode half-reactions and the net reaction (U.S. DOE).</li>
+              <li>The membrane passes protons; electrons take the external circuit (U.S. DOE).</li>
+              <li>Typical PEM operating range of about 70–90 °C, shown as a band, not a value (U.S. DOE).</li>
+              <li>Cells electrically in series, water and gas in parallel; end plates; layer materials described as “typical” (NREL).</li>
+              <li>Balance-of-plant blocks: transformer and rectifier, deionization, tank, radiator-type cooling, hydrogen separation and drying (NREL).</li>
+            </ul>
+          </div>
+          <div class="reveal">
+            <h3>Illustrative by design</h3>
+            <ul>
+              <li>Generic PEM stack, not any product. Six cells shown; real stacks vary.</li>
+              <li>Not to scale. Layer thicknesses are exaggerated so each layer is legible.</li>
+              <li>Molecular scale is schematic and shown in slow motion; flow speeds are illustrative.</li>
+              <li>The heat field and temperature diagram are qualitative. No values are implied.</li>
+              <li>No efficiency, output, cost, or lifetime claims. No invented specifications.</li>
+              <li>Camera, palette, cutaways, and timing are original illustrative directions.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="transcript" class="section">
+        <h2>Transcript</h2>
+        <p class="section-lead">The captions burned into the video, with timecodes. Select a timecode to jump there.</p>
+        <div class="transcript">
+          
+          <section class="transcript-chapter">
+            <h3>01 · Reveal MEA &amp; plates</h3>
+            <ol>
+              <li><button type="button" class="beat-jump" data-frame="0"><time datetime="PT0S">00:00.00</time></button><span>A PEM stack repeats one cell many times, clamped between two end plates.</span></li>
+              <li><button type="button" class="beat-jump" data-frame="36"><time datetime="PT1.2S">00:01.20</time></button><span>Section A–A cuts through the flow channels. Nothing is taken apart.</span></li>
+              <li><button type="button" class="beat-jump" data-frame="96"><time datetime="PT3.2S">00:03.20</time></button><span>Each cell: bipolar plates, porous transport layers, and a catalyst-coated membrane.</span></li>
+            </ol>
+          </section>
+          <section class="transcript-chapter">
+            <h3>02 · Water feed</h3>
+            <ol>
+              <li><button type="button" class="beat-jump" data-frame="150"><time datetime="PT5S">00:05.00</time></button><span>Deionized water enters through the anode inlet manifold.</span></li>
+              <li><button type="button" class="beat-jump" data-frame="192"><time datetime="PT6.4S">00:06.40</time></button><span>The manifold feeds every cell’s anode channel in parallel.</span></li>
+              <li><button type="button" class="beat-jump" data-frame="248"><time datetime="PT8.27S">00:08.27</time></button><span>Water spreads through the porous transport layer to the anode catalyst.</span></li>
+            </ol>
+          </section>
+          <section class="transcript-chapter">
+            <h3>03 · Gas evolution</h3>
+            <ol>
+              <li><button type="button" class="beat-jump" data-frame="300"><time datetime="PT10S">00:10.00</time></button><span>DC voltage across the cell supplies the energy to split water.</span></li>
+              <li><button type="button" class="beat-jump" data-frame="352"><time datetime="PT11.73S">00:11.73</time></button><span>At the anode catalyst, water splits into O<sub>2</sub>, protons, and electrons.</span></li>
+              <li><button type="button" class="beat-jump" data-frame="392"><time datetime="PT13.07S">00:13.07</time></button><span>Protons cross the membrane. Electrons take the external circuit. They recombine as H<sub>2</sub>.</span></li>
+              <li><button type="button" class="beat-jump" data-frame="440"><time datetime="PT14.67S">00:14.67</time></button><span>Bubbles detach and ride the channels to the outlet manifolds.</span></li>
+            </ol>
+          </section>
+          <section class="transcript-chapter">
+            <h3>04 · Cooling</h3>
+            <ol>
+              <li><button type="button" class="beat-jump" data-frame="510"><time datetime="PT17S">00:17.00</time></button><span>Cell losses appear as heat, concentrated in the membrane electrode assembly.</span></li>
+              <li><button type="button" class="beat-jump" data-frame="580"><time datetime="PT19.33S">00:19.33</time></button><span>Most of the water is not consumed. It circulates and carries the heat out.</span></li>
+              <li><button type="button" class="beat-jump" data-frame="660"><time datetime="PT22S">00:22.00</time></button><span>Outside the stack, a heat exchanger rejects that heat and the cooled water returns.</span></li>
+            </ol>
+          </section>
+          <section class="transcript-chapter">
+            <h3>05 · Balance of plant</h3>
+            <ol>
+              <li><button type="button" class="beat-jump" data-frame="750"><time datetime="PT25S">00:25.00</time></button><span>The stack is one block in a larger system: the balance of plant.</span></li>
+              <li><button type="button" class="beat-jump" data-frame="790"><time datetime="PT26.33S">00:26.33</time></button><span>Power: AC is transformed and rectified to DC for the stack.</span></li>
+              <li><button type="button" class="beat-jump" data-frame="826"><time datetime="PT27.53S">00:27.53</time></button><span>Water: filtered, deionized, circulated, and separated from O<sub>2</sub>.</span></li>
+              <li><button type="button" class="beat-jump" data-frame="872"><time datetime="PT29.07S">00:29.07</time></button><span>Hydrogen: separated from water, dried, then delivered.</span></li>
+              <li><button type="button" class="beat-jump" data-frame="912"><time datetime="PT30.4S">00:30.40</time></button><span>Sensors and controls close the loop.</span></li>
+              <li><button type="button" class="beat-jump" data-frame="956"><time datetime="PT31.87S">00:31.87</time></button><span>Complete system view. Generic PEM, simplified for explanation.</span></li>
+            </ol>
+          </section>
+        </div>
+      </section>
+
+      <section id="how" class="section">
+        <h2>How it is built</h2>
+        <div class="how-grid">
+          <div class="reveal">
+            <h3>Deterministic timeline</h3>
+            <p>The renderer is a pure function of the frame index. Camera keys, fades, bubble emitters, and molecular cycles derive from the frame number and a seeded hash. There is no wall clock and no <code>Math.random</code>, so frame 612 renders identically in the browser, in the video export, and on every replay.</p>
+          </div>
+          <div class="reveal">
+            <h3>One world, many scales</h3>
+            <p>Stack, cell, catalyst interface, and plant share one coordinate system. Zoom interpolates in log space about a fixed point, so macro-to-micro dives do not swing sideways. Detail fades in by zoom level, and line widths stay constant on screen.</p>
+          </div>
+          <div class="reveal">
+            <h3>Canvas 2D, TypeScript, Vite</h3>
+            <p>No animation library and no 3D engine. Headless Chrome renders each frame at 1920×1080 and ffmpeg encodes the 1,020 frames to H.264 at 30 fps. The same code produces the hero image.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="sources" class="section">
+        <h2>Sources</h2>
+        <ul class="sources">
+          
+          <li>
+            <a href="https://www.energy.gov/eere/fuelcells/hydrogen-production-electrolysis" rel="noopener" target="_blank">Hydrogen Production: Electrolysis</a>
+            <span class="source-org">U.S. Department of Energy, Hydrogen and Fuel Cell Technologies Office</span>
+            <span class="source-supports">Supports: PEM half-reactions, solid polymer electrolyte, proton transport, typical 70–90 °C operating range.</span>
+          </li>
+          <li>
+            <a href="https://www.energy.gov/eere/fuelcells/hydrogen-production" rel="noopener" target="_blank">Hydrogen Production</a>
+            <span class="source-org">U.S. Department of Energy, Hydrogen and Fuel Cell Technologies Office</span>
+            <span class="source-supports">Supports: Mechanism reference named in the brief: electrolysis as a hydrogen production pathway.</span>
+          </li>
+          <li>
+            <a href="https://docs.nlr.gov/docs/fy19osti/72740.pdf" rel="noopener" target="_blank">Manufacturing Cost Analysis for Proton Exchange Membrane Water Electrolyzers (NREL/TP-6A20-72740, 2019)</a>
+            <span class="source-org">National Renewable Energy Laboratory</span>
+            <span class="source-supports">Supports: Stack anatomy: repeating cells electrically in series with water and product gas in parallel, end plates, CCM, sintered porous titanium PTL (anode), carbon paper (cathode), bipolar plates.</span>
+          </li>
+          <li>
+            <a href="https://docs.nlr.gov/docs/fy24osti/87625.pdf" rel="noopener" target="_blank">Updated Manufactured Cost Analysis for Proton Exchange Membrane Water Electrolyzers (NREL/TP-6A20-87625, 2024)</a>
+            <span class="source-org">National Renewable Energy Laboratory</span>
+            <span class="source-supports">Supports: Balance of plant: transformer and rectifier (AC to DC), water filtering and deionization, feedwater tank on the oxygen side, radiator cooling of circulating water, hydrogen separation and drying, instrumentation.</span>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Generic PEM electrolyzer explainer · illustrative · not a certified engineering reference.</p>
+      <p>Built by <a href="https://kineticgain.com" rel="noopener">Kinetic Gain LLC</a> · <a href="https://github.com/mizcausevic-dev/pem-electrolyzer-stack-explainer" rel="noopener">Source on GitHub</a></p>
+    </footer>
+
+  </body>
 </html>
