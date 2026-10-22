@@ -2,7 +2,7 @@ import { type Camera, worldToScreen } from '../engine/camera';
 import { clamp, fade } from '../engine/math';
 import { BOP, SENSORS } from './bop';
 import { CC_L, CC_R, FOCUS_CELL, Y, cellX, layerX } from './geometry';
-import { roundRect } from './hud';
+import { LOCATOR, locatorAlpha, roundRect } from './hud';
 import { FOCUS_Y, type Cycle, cycle, electronAnodePos, h2Pos, o2Pos, protonPos, waterPos } from './micro';
 import { C, rgba } from './palette';
 import type { FrameState } from './state';
@@ -69,11 +69,11 @@ const BRACKETS: BracketSpec[] = [
 /* ---------------------------------------------------------- 02 · water feed */
 
 const SCENE2: LabelSpec[] = [
-  { text: 'Deionized water in', sub: 'anode inlet manifold', at: [-134, (Y.inManTop + Y.inManBot) / 2], off: [-6, -112], win: [182, 196, 236, 250], align: 'left', tone: 'cyan' },
-  { text: 'Feeds every cell in parallel', sub: 'one manifold, many channels', at: [mid('achan', 3), (Y.inManTop + Y.inManBot) / 2], off: [0, -150], win: [198, 212, 240, 254], align: 'center', tone: 'cyan' },
-  { text: 'Water rises in each anode channel', at: [mid('achan', 1), 64], off: [-200, -60], win: [204, 218, 244, 258], align: 'right', tone: 'cyan' },
-  { text: 'Cathode channel: no liquid feed', sub: 'in this generic configuration', at: [mid('cchan', 1), 70], off: [120, 0], win: [212, 226, 248, 262], align: 'left' },
-  { text: 'Porous transport layer wets', sub: 'water reaches the anode catalyst', at: [mid('ptl'), -30], off: [-260, 0], win: [262, 276, 304, 318], align: 'right', tone: 'cyan' },
+  { text: 'Deionized water in', sub: 'anode inlet manifold', at: [-134, (Y.inManTop + Y.inManBot) / 2], off: [-6, -112], win: [180, 192, 226, 236], align: 'left', tone: 'cyan' },
+  { text: 'Feeds every cell in parallel', sub: 'one manifold, many channels', at: [mid('achan', 3), (Y.inManTop + Y.inManBot) / 2], off: [0, -150], win: [194, 206, 228, 238], align: 'center', tone: 'cyan' },
+  { text: 'Water rises in each anode channel', at: [mid('achan', 1), 64], off: [-200, 70], win: [202, 214, 230, 240], align: 'right', tone: 'cyan' },
+  { text: 'Cathode channel: no liquid feed', sub: 'in this generic configuration', at: [mid('cchan', 1), 70], off: [120, 0], win: [208, 220, 230, 240], align: 'left' },
+  { text: 'Porous transport layer wets', sub: 'water reaches the anode catalyst', at: [mid('ptl'), -30], off: [-260, 0], win: [262, 276, 296, 306], align: 'right', tone: 'cyan' },
 ];
 
 /* ---------------------------------------------------------- 03 · gas evolution */
@@ -87,8 +87,8 @@ const pt = (p: { x: number; y: number } | null): Pt | null => (p ? [p.x, p.y] : 
 const MICRO_WIN: [number, number, number, number] = [362, 376, 434, 446];
 
 const SCENE3: LabelSpec[] = [
-  { text: 'e^− through the plates', sub: 'external circuit, cell to cell in series', at: [cellX(FOCUS_CELL) + 2, -34], off: [-200, 30], win: [308, 320, 336, 348], align: 'right', tone: 'gold' },
-  { text: 'H^+ through the membrane', sub: 'anode to cathode', at: [mid('mem'), -23], off: [150, 120], win: [308, 320, 336, 348], align: 'left', tone: 'cyan' },
+  { text: 'e^− through the plates', sub: 'external circuit, cell to cell in series', at: [cellX(FOCUS_CELL) + 2, -34], off: [-200, 30], win: [310, 320, 336, 348], align: 'right', tone: 'gold' },
+  { text: 'H^+ through the membrane', sub: 'anode to cathode', at: [mid('mem'), -23], off: [150, 120], win: [310, 320, 336, 348], align: 'left', tone: 'cyan' },
 
   { text: 'Anode catalyst layer', sub: 'catalyst particles in ionomer', at: [mid('acl'), -19], off: [0, -128], win: MICRO_WIN, align: 'center' },
   { text: 'Membrane (PEM)', sub: 'passes H^+ only', at: [mid('mem'), -19], off: [0, -128], win: MICRO_WIN, align: 'center' },
@@ -149,7 +149,7 @@ const SCENE5: LabelSpec[] = [
   { text: 'Feed water', at: [BOP.feed.x, -40], off: [-18, -40], win: from(828), align: 'left', tone: 'cyan' },
   { text: 'Carbon filter + deionizer', at: [(BOP.di.x0 + BOP.di.x1) / 2, BOP.di.y1], off: [0, 36], win: from(832), align: 'center', tone: 'cyan' },
   { text: 'Water tank + O_2 separation', at: [-470, BOP.tank.y0], off: [-20, -44], win: from(836), align: 'right', tone: 'cyan' },
-  { text: 'O_2 vent (or capture)', at: [-440, -178], off: [0, -22], win: from(840), align: 'center', tone: 'cyan' },
+  { text: 'O_2 vent (or capture)', at: [-440, -178], off: [-18, -16], win: from(840), align: 'right', tone: 'cyan' },
   { text: 'Circulation pump', at: [BOP.pump.x - BOP.pump.r, BOP.pump.y], off: [-16, 0], win: from(844), align: 'right', tone: 'gold' },
   { text: 'Heat exchanger', at: [(BOP.hx.x0 + BOP.hx.x1) / 2, BOP.hx.y1], off: [0, 32], win: from(848), align: 'center', tone: 'gold' },
 
@@ -168,6 +168,21 @@ export const LABELS: LabelSpec[] = [...SCENE1, ...SCENE2, ...SCENE3, ...SCENE4, 
 const TITLE = { size: 19, weight: 600, color: C.bone };
 const SUB = { size: 14.5, weight: 400, color: C.muted };
 
+/** Fades a label box as it slides under the header, badges, legend/footer band, or locator inset. */
+function safeArea(cam: Camera, f: number, x0: number, y0: number, w: number, h: number, lh: number): number {
+  const x1 = x0 + w;
+  const y1 = y0 + h;
+  let pen = Math.max(0, y1 - (lh - 150));
+  if (x0 < 1090 || x1 > 1520) pen = Math.max(pen, 204 - y0);
+  const loc = locatorAlpha(cam, f);
+  if (loc > 0.01) {
+    const g = 12;
+    const depth = Math.min(x1 - (LOCATOR.x - g), LOCATOR.x + LOCATOR.w + g - x0, y1 - (LOCATOR.y - g), LOCATOR.y + LOCATOR.h + g - y0);
+    if (depth > 0) pen = Math.max(pen, depth * loc);
+  }
+  return clamp(1 - pen / 28);
+}
+
 function drawLabel(ctx: CanvasRenderingContext2D, cam: Camera, f: number, st: FrameState, L: LabelSpec, lw: number, lh: number): void {
   const a = fade(f, ...L.win);
   if (a <= 0.01) return;
@@ -176,8 +191,7 @@ function drawLabel(ctx: CanvasRenderingContext2D, cam: Camera, f: number, st: Fr
   const [sx, sy] = worldToScreen(cam, p[0], p[1], lw, lh);
   const margin = 12;
   const inside = clamp(Math.min(sx + margin, lw + margin - sx, sy + margin, lh + margin - sy) / 40);
-  const alpha = a * inside;
-  if (alpha <= 0.01) return;
+  if (a * inside <= 0.01) return;
 
   const tone = toneColor(L.tone);
   const tw = measureRich(ctx, L.text, TITLE);
@@ -190,8 +204,11 @@ function drawLabel(ctx: CanvasRenderingContext2D, cam: Camera, f: number, st: Fr
   const bx = sx + L.off[0] + Math.sign(L.off[0]) * slide;
   const by = sy + L.off[1] + Math.sign(L.off[1]) * slide;
   const align = L.align ?? 'left';
-  const x0 = align === 'left' ? bx : align === 'right' ? bx - w : bx - w / 2;
+  const x0 = clamp(align === 'left' ? bx : align === 'right' ? bx - w : bx - w / 2, 24, lw - 24 - w);
   const y0 = by - h / 2;
+
+  const alpha = a * inside * safeArea(cam, f, x0, y0, w, h, lh);
+  if (alpha <= 0.01) return;
 
   ctx.save();
   ctx.globalAlpha = alpha;

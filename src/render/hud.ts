@@ -187,14 +187,15 @@ export function drawFooter(ctx: CanvasRenderingContext2D, f: number): void {
   }
 }
 
+export const LOCATOR = { x: 1856 - 230, y: 808, w: 230, h: 150 };
+
+export const locatorAlpha = (cam: Camera, f: number): number => smooth(ramp(cam.z, 3.2, 5)) * smooth(ramp(f, 100, 120));
+
 /** Locator inset: stack outline with the current viewport, keeps context during dives. */
 export function drawLocator(ctx: CanvasRenderingContext2D, cam: Camera, f: number): void {
-  const a = smooth(ramp(cam.z, 3.2, 5)) * smooth(ramp(f, 100, 120));
+  const a = locatorAlpha(cam, f);
   if (a <= 0.01) return;
-  const W = 230;
-  const H = 150;
-  const X = 1856 - W;
-  const Y0 = 808;
+  const { w: W, h: H, x: X, y: Y0 } = LOCATOR;
   ctx.save();
   ctx.globalAlpha = a;
   roundRect(ctx, X, Y0, W, H, 8);

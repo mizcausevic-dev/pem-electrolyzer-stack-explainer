@@ -28,8 +28,8 @@ export const CAMERA_KEYS: CamKey[] = [
   { f: 124, x: -15.5, y: 0, z: 26, ease: inOutQuint },
   // 02 · Water feed
   { f: 162, x: -15.5, y: 0, z: 26 },
-  { f: 190, x: -50, y: 80, z: 10.5, ease: inOutCubic },
-  { f: 214, x: -50, y: 80, z: 10.5 },
+  { f: 188, x: -50, y: 90, z: 10.5, ease: inOutCubic },
+  { f: 236, x: -50, y: 90, z: 10.5 },
   { f: 274, x: -22, y: -20, z: 19, ease: inOutSine },
   // 03 · Gas evolution
   { f: 326, x: -22, y: -20, z: 19 },

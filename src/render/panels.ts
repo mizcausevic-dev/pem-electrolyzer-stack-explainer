@@ -54,7 +54,7 @@ export function drawChargePanel(ctx: CanvasRenderingContext2D, f: number): void 
   ctx.globalAlpha = a;
   mathPanel(ctx, x, y, PW, h, 'SCHEMATIC · CHARGE PATH');
 
-  const cy = y + 150;
+  const cy = y + 132;
   const colW = [130, 70, 130];
   const cx0 = x + 63;
   const cols: [string, string, string][] = [
@@ -142,7 +142,7 @@ export function drawChargePanel(ctx: CanvasRenderingContext2D, f: number): void 
     ctx.fill();
   }
   drawRich(ctx, 'H^+', centers[1], cy - 8, { size: 14, family: MONO, color: C.cyan, align: 'center' });
-  const cap = wrap(ctx, 'In a stack, bipolar plates carry current cell to cell in series.', { size: 14, color: C.muted }, PW - 44);
+  const cap = wrap(ctx, 'Bipolar plates carry current cell to cell in series.', { size: 14, color: C.muted }, PW - 44);
   cap.forEach((ln, i) => drawRich(ctx, ln, x + 22, y + h - 14 - (cap.length - 1 - i) * 18, { size: 14, color: C.muted }));
   ctx.restore();
 }
@@ -185,7 +185,7 @@ export function drawEquationPanel(ctx: CanvasRenderingContext2D, f: number): voi
 
 export function drawTemperaturePanel(ctx: CanvasRenderingContext2D, st: FrameState): void {
   const f = st.f;
-  const a = fade(f, 566, 586, 704, 722);
+  const a = fade(f, 566, 586, 670, 688);
   if (a <= 0.01) return;
   const x = PX;
   const y = 236;

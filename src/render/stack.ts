@@ -140,6 +140,7 @@ function drawSection(w: W): void {
   for (const b of [OUT, IN]) box(w, END_L[0], b[0], LAST_PLATE[1], b[1], C.void);
 
   const tex = lod(w, 5, 9);
+  const porous = tex * (1 - 0.6 * lod(w, 60, 120));
   for (let i = 0; i < N_CELLS; i++) {
     const x = cellX(i);
     if (!hit(w, x - 1, Y.plateTop, x + CELL_W + 1, Y.plateBot)) continue;
@@ -162,7 +163,7 @@ function drawSection(w: W): void {
       const wy0 = Math.max(front, Y.activeTop);
       box(w, p0, wy0, p0 + (p1 - p0) * Math.max(wet, 0.02), Y.activeBot, rgba(C.cyan, 0.2));
     }
-    if (tex > 0.01) ptlTexture(w, p0, Y.activeTop, p1, Y.activeBot, tex);
+    if (porous > 0.01) ptlTexture(w, p0, Y.activeTop, p1, Y.activeBot, porous);
 
     const [a0, a1] = layerX(i, 'acl');
     const [m0, m1] = layerX(i, 'mem');
@@ -179,7 +180,7 @@ function drawSection(w: W): void {
     if (tex > 0.01) {
       clTexture(w, a0, Y.activeTop, a1, Y.activeBot, tex * (1 - lod(w, 45, 80)));
       clTexture(w, c0, Y.activeTop, c1, Y.activeBot, tex * (1 - lod(w, 45, 80)));
-      gdlTexture(w, g0, Y.activeTop, g1, Y.activeBot, tex);
+      gdlTexture(w, g0, Y.activeTop, g1, Y.activeBot, porous);
     }
     for (const xb of [x + 4, p0, p1, a1, m1, c1, g1, x + CELL_W]) {
       line(w, [[xb, Y.activeTop], [xb, Y.activeBot]], rgba('#000000', 0.5), 0.8);
