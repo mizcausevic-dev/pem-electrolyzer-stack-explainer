@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "frames": "node scripts/render-frames.mjs",
+    "video": "node scripts/render-video.mjs",
+    "hero": "node scripts/render-hero.mjs",
+    "verify:dist": "node scripts/verify-dist.mjs dist",
+    "probe:live": "node scripts/probe-live.mjs"
   },
   "devDependencies": {
     "puppeteer-core": "^25.15.0",
