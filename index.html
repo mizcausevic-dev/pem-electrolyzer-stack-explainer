@@ -1,23 +1,115 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>How a PEM Electrolyzer Stack Works | 34-Second Anatomy Motion Explainer</title>
-<meta name="description" content="A code-driven, frame-accurate anatomy explainer of a generic PEM electrolyzer stack. 1,020 frames at 30 fps: MEA, bipolar plates, water feed, gas evolution, cooling, and balance of plant."/>
-<meta name="keywords" content="PEM electrolyzer, proton exchange membrane, hydrogen production, electrolysis, MEA, bipolar plate, balance of plant, green hydrogen"/>
-<meta property="og:title" content="How a PEM Electrolyzer Stack Works"/>
-<meta property="og:description" content="Water in. Hydrogen and oxygen out. A 34-second deterministic motion explainer of the stack in between."/>
-<meta property="og:type" content="article"/>
-<meta property="og:image" content="./hero-Cursor.png"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◈</text></svg>"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PEM Electrolyzer Stack, Explained in 34 Seconds | Anatomy Motion Explainer</title>
+<meta name="description" content="A code-driven, frame-accurate anatomy explainer of a generic PEM electrolyzer stack: MEA and plates, water feed, gas evolution, cooling, and balance of plant. 1,020 deterministic frames at 30 fps. No efficiency claims, no invented specs." />
+<meta name="author" content="Mirza Causevic, Kinetic Gain LLC" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="PEM Electrolyzer Stack, Explained in 34 Seconds" />
+<meta property="og:description" content="Water in. Protons across. Hydrogen out. A deterministic, code-rendered walk through a generic PEM electrolyzer stack and its balance of plant." />
+<meta property="og:url" content="https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/" />
+<meta property="og:image" content="https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/hero-Cursor.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="PEM Electrolyzer Stack, Explained in 34 Seconds" />
+<meta name="twitter:description" content="1,020 frames. 5 chapters. One membrane doing the sorting. Code-rendered, scrub-able, frame-accurate." />
+<meta name="twitter:image" content="https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/hero-Cursor.png" />
+<meta name="theme-color" content="#0B1019" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B1019'/%3E%3Crect x='14' y='5' width='4' height='22' rx='2' fill='%23E8E4D8'/%3E%3Ccircle cx='8' cy='20' r='3' fill='none' stroke='%2300E5FF' stroke-width='2'/%3E%3Ccircle cx='24' cy='12' r='3' fill='none' stroke='%2300E5FF' stroke-width='2'/%3E%3C/svg%3E" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"How a PEM Electrolyzer Stack Works","description":"A frame-accurate anatomy explainer of a generic PEM electrolyzer stack.","author":{"@type":"Organization","name":"Kinetic Gain LLC","url":"https://kineticgain.com"},"about":[{"@type":"Thing","name":"PEM electrolysis"},{"@type":"Thing","name":"Hydrogen production"}]}
+{"@context":"https://schema.org","@type":"Article","headline":"PEM Electrolyzer Stack, Explained in 34 Seconds","description":"A code-driven anatomy motion explainer of a generic PEM electrolyzer stack: MEA, water feed, gas evolution, cooling, and balance of plant.","author":{"@type":"Person","name":"Mirza Causevic"},"publisher":{"@type":"Organization","name":"Kinetic Gain LLC","url":"https://kineticgain.com"},"mainEntityOfPage":"https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/","image":"https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/hero-Cursor.png","citation":"https://www.energy.gov/eere/fuelcells/hydrogen-production"}
 </script>
 </head>
 <body>
-<div id="app"></div>
+<header class="top">
+  <a class="brand" href="./">KINETIC GAIN <span>· HYDROGEN &amp; FUEL CELL SYSTEMS</span></a>
+  <nav><a href="#explainer">Explainer</a><a href="#chapters-list">Chapters</a><a href="#accuracy">Accuracy</a><a href="./article-Cursor.html">Article</a></nav>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="kicker">CODE-DRIVEN MOTION EXPLAINER · 34S · 30 FPS · 1,020 FRAMES</p>
+    <h1>PEM electrolyzer stack,<br/>explained in 34 seconds.</h1>
+    <p class="lede">Water in. Protons across a membrane. Electrons forced the long way around. Hydrogen out. Every frame below is rendered by code from its frame number alone, so you can scrub it, pause it, and export any frame as an image.</p>
+    <div class="hero-meta">
+      <span><strong>Product</strong> Frame-accurate anatomy explainer</span>
+      <span><strong>For</strong> Engineers, students, hydrogen-curious operators</span>
+      <span><strong>Scope</strong> Generic PEM. No efficiency claims.</span>
+    </div>
+  </section>
+
+  <section id="explainer" class="stage-wrap">
+    <canvas id="stage" width="1280" height="720" aria-label="Animated sectional diagram of a PEM electrolyzer stack"></canvas>
+    <div class="controls" role="group" aria-label="Playback controls">
+      <button id="play" aria-pressed="false">▶ Play</button>
+      <button id="restart">↺ Restart</button>
+      <button id="prev" title="Previous frame (←)">‹ Frame</button>
+      <button id="next" title="Next frame (→)">Frame ›</button>
+      <input id="scrub" type="range" min="0" max="1019" value="0" step="1" aria-label="Scrub frames 0 to 1019" />
+      <select id="speed" aria-label="Playback speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select>
+      <button id="exportPng">Export PNG</button>
+      <output id="frameOut">00:00:00 · frame 0 / 1019</output>
+    </div>
+    <div id="chapters" class="chapters" role="group" aria-label="Chapters"></div>
+    <div class="now"><h2 id="chapterOut">Reveal: MEA and plates</h2><p id="narration"></p></div>
+  </section>
+
+  <section id="chapters-list" class="grid">
+    <div class="panel span2">
+      <h2>Chapter map</h2>
+      <ol id="narrateList" class="narrate"></ol>
+    </div>
+    <div class="panel">
+      <h2>How to read the colors</h2>
+      <ul class="legend">
+        <li><i style="--c:#00E5FF"></i><strong>Cyan #00E5FF</strong><span>Primary pathway. Water, protons, gases, coolant.</span></li>
+        <li><i style="--c:#FFD166"></i><strong>Gold #FFD166</strong><span>Actuation and energy. DC power, electrons, compression, heat.</span></li>
+        <li><i style="--c:#9D4EDD"></i><strong>Violet #9D4EDD</strong><span>Sensing and state. Membrane, temperature sensors, control.</span></li>
+        <li><i style="--c:#344257"></i><strong>Slate #344257</strong><span>Structural hardware on the #0B1019 dark technical stage.</span></li>
+      </ul>
+      <p class="fine">These are explanatory colors, not literal emission. Materials stay plausible. Fields, flows, and math are labeled as diagrams where they appear.</p>
+    </div>
+    <div class="panel" id="accuracy">
+      <h2>Accuracy notes</h2>
+      <ul class="ticks">
+        <li>Generic PEM architecture only. Not a commercial design.</li>
+        <li>Half-reactions: anode 2H<sub>2</sub>O → O<sub>2</sub> + 4H<sup>+</sup> + 4e<sup>−</sup>; cathode 4H<sup>+</sup> + 4e<sup>−</sup> → 2H<sub>2</sub>.</li>
+        <li>Bubble counts follow the 2:1 H<sub>2</sub>:O<sub>2</sub> mole ratio in those equations.</li>
+        <li>Scale changes, slow motion, and time compression are labeled on screen.</li>
+        <li>No efficiency claims. No invented specifications. No measured data is presented as measured.</li>
+        <li>Process reference: U.S. DOE, Hydrogen Production / Electrolysis (<a href="https://www.energy.gov/eere/fuelcells/hydrogen-production" rel="noopener">energy.gov</a>).</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h2>Deterministic by construction</h2>
+      <p>Playback does not accumulate state. The renderer is a pure function, <code>render(frame)</code>, with seeded hashes instead of <code>Math.random()</code>. Frame 812 looks identical today, tomorrow, and on your machine.</p>
+      <p>Deep-link any moment with <code>?frame=812</code>. Step with arrow keys. Shift + arrow jumps one second.</p>
+      <p><a class="cta" href="./article-Cursor.html">Read the full article →</a></p>
+    </div>
+    <div class="panel span2">
+      <h2>The 10-question product frame</h2>
+      <ol class="ten">
+        <li><strong>What:</strong> a scrub-able, code-rendered anatomy explainer of a generic PEM electrolyzer stack.</li>
+        <li><strong>Who:</strong> engineers evaluating hydrogen systems, students, technical buyers, and content teams who need a correct visual.</li>
+        <li><strong>Why it wins:</strong> frame accuracy plus labeled scale and time distortions. Most explainers hide those. This one prints them on screen.</li>
+        <li><strong>Structure:</strong> five chapters, one causal chain, a persistent ribbon so the previous stage never leaves the frame.</li>
+        <li><strong>Discovery:</strong> search and social via the article, the hero image, and frame deep-links that land on an exact moment.</li>
+        <li><strong>Engagement:</strong> scrub, step, chapter jump, PNG export. The reader drives the section view.</li>
+        <li><strong>Conversion:</strong> the article and repo carry the consulting and explainer-production offer. No fake metrics, no gated fluff.</li>
+        <li><strong>Money:</strong> reusable explainer engine for client verticals. Same timeline code, new subject data.</li>
+        <li><strong>Launch:</strong> GitHub Pages from the <code>gh-pages</code> branch, repo public, article cross-posted to Medium.</li>
+        <li><strong>Improve:</strong> add narration audio, WebM export, and a second subject (fuel cell, reverse operation) on the same engine.</li>
+      </ol>
+    </div>
+  </section>
+</main>
+<footer>
+  <span>Kinetic Gain LLC · Built in code. Verify subject-specific details before publication. Working explainer, not a certified engineering reference.</span>
+  <span>DOE reference: <a href="https://www.energy.gov/eere/fuelcells/hydrogen-production" rel="noopener">energy.gov/eere/fuelcells/hydrogen-production</a></span>
+</footer>
 <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

@@ -1,61 +1,67 @@
-# PEM Electrolyzer Stack. 34-Second Anatomy Motion Explainer
+# PEM Electrolyzer Stack Explainer
 
-**GitHub About:** Code-driven 34-second anatomy motion explainer of a generic PEM electrolyzer stack.
-**Topics:** `pem-electrolyzer` `hydrogen` `electrolysis` `fuel-cells` `motion-design` `canvas-animation` `technical-explainer` `green-hydrogen` `energy-systems` `typescript`
+**About:** Code-driven, anatomy-style motion explainer of a generic PEM electrolyzer stack. 34 seconds, 30 fps, 1,020 deterministic frames.
 
-A deterministic, frame-driven explainer: 1,020 frames (0–1019) at 30 fps, 34 seconds. Scrub to any frame and the image is reproducible. No wall-clock randomness drives the picture.
+**Topics:** `pem-electrolyzer` `hydrogen` `fuel-cells` `electrolysis` `canvas-animation` `technical-explainer` `typescript` `vite` `science-communication` `kinetic-gain`
 
-## Chapters
+Live: https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/
+Article: https://mizcausevic-dev.github.io/pem-electrolyzer-stack-explainer/article-Cursor.html (full text also in `medium-article-Cursor.md` for Medium cross-posting)
+
+![Hero: sectional PEM stack diagram](public/hero-Cursor.png)
+
+## What this is
+
+One complete, usable slice: a scrub-able explainer that walks a generic PEM electrolyzer stack through five chapters on one causal chain.
 
 | Frames | Time | Chapter | Camera |
 |---|---|---|---|
-| 0–149 | 0–5s | Reveal MEA and plates | Push into sectional cell |
-| 150–299 | 5–10s | Show water feed | Track to anode inlet |
-| 300–509 | 10–17s | Trace gas evolution | Micro push on membrane |
-| 510–749 | 17–25s | Show cooling | Widen to coolant loop |
-| 750–1019 | 25–34s | Pull back to balance of plant | Pull back to system view |
+| 0–149 | 0–5s | Reveal MEA and plates | Slow push-in to sectional close-up |
+| 150–299 | 5–10s | Water feed | Lateral track along the inlet manifold |
+| 300–509 | 10–17s | Gas evolution | Dive to the membrane interface |
+| 510–749 | 17–25s | Cooling | Rise back to plate and coolant loop |
+| 750–1019 | 25–34s | Balance of plant | Pull back, then settle on the full system |
+
+Palette (explanatory, not literal emission): dark stage `#0B1019`, structures `#344257`, cyan `#00E5FF` for the primary pathway, gold `#FFD166` for actuation and energy, violet `#9D4EDD` for sensing and state.
+
+## Why deterministic
+
+`render(frame)` in `src/render.ts` is a pure function. Seeded hashes replace `Math.random()`. Any frame renders identically on any machine, can be cited by number, deep-linked with `?frame=812`, stepped with arrow keys, and exported as PNG from the player.
 
 ## Run locally
 
 ```bash
 npm install
-npm run dev -- --port 43123 --host 127.0.0.1
-npm run build
+npm run dev      # http://127.0.0.1:4319
+npm run build    # typecheck + production build to dist/
 npm run preview
 ```
 
-## What it is, in the 10 required dimensions
+## Accuracy scope
 
-1. **Product:** Code-driven anatomy motion explainer of a generic PEM electrolyzer stack.
-2. **Who:** Engineers, students, technical buyers, investors doing mechanism diligence.
-3. **Why it wins:** It shows causality in sequence (delivery, separation, heat, system) instead of narrating over a static cutaway.
-4. **Structure:** Deterministic canvas frame engine, five causal chapters, scrub control, frame export.
-5. **Discovery:** GitHub Pages, Medium article, search (PEM electrolyzer stack, MEA, balance of plant).
-6. **Engagement:** Play, scrub, chapter jump, keyboard arrows, PNG frame export.
-7. **Conversion:** Reader moves to the full article, the repository, and explainer/briefing inquiries.
-8. **Money:** Productized explainer packages and technical content engagements. No product claim is made for any commercial stack.
-9. **Launch:** GitHub Pages (`gh-pages` branch) plus Medium draft in `public/article-Cursor.md`.
-10. **Improve:** Add narration, captions, additional language tracks, and sibling explainers (alkaline, SOEC, fuel cell) from the same frame engine.
+Generic PEM architecture only. Half-reactions: anode `2H2O → O2 + 4H+ + 4e−`, cathode `4H+ + 4e− → 2H2`. Bubble counts follow the 2:1 H2:O2 mole ratio. Scale changes, slow motion, and time compression are labeled on screen. No efficiency claims, no invented specifications, no measured data presented as measured. Where a mechanism cannot be shown faithfully (proton transport), the animation uses an explicitly labeled schematic.
 
-## Accuracy boundaries
+Process reference: U.S. DOE, Hydrogen Production / Electrolysis, https://www.energy.gov/eere/fuelcells/hydrogen-production
 
-Generic PEM only. No efficiency claims. No invented specifications. Schematic sectional views are labeled not to scale, slow motion, or time-compressed where applicable. Reference: DOE Hydrogen Production, https://www.energy.gov/eere/fuelcells/hydrogen-production. Verify subject-specific details before publication or engineering use.
+Working explainer, not a certified engineering reference. Verify subject-specific details before publication.
+
+## Repurposing
+
+The timeline engine (`src/timeline.ts`: chapters, eased camera keys, causal ribbon) is subject-agnostic. Swap the chapter data and stack geometry and the same code explains a fuel cell in reverse, a flow battery, or any layered electrochemical device. The color legend keeps its meaning across subjects.
 
 ## Files
 
-- `src/main.ts` Frame engine, camera easing, canvas renderer, player controls
-- `src/style.css` Dark technical stage, responsive layout
-- `public/hero-Cursor.png` Hero image (1600×900), generated by `scripts/make-hero.py`
-- `public/article-Cursor.md` Full Medium-ready article with SEO metadata
-- `scripts/make-hero.py` Deterministic hero generator (Pillow)
+- `src/timeline.ts` — frame math, chapters, camera keys, deterministic hash
+- `src/render.ts` — pure canvas renderer
+- `src/main.ts` — playback, scrubbing, chapter UI, PNG export
+- `public/hero-Cursor.png` — hero image, drawn by `tools/make-hero.py`
+- `medium-article-Cursor.md` — full Medium article (source for `public/article-Cursor.html`, built by `tools/make-article.py`)
 
-Note on file naming: standing rules conflict on generated-file suffix (`-Claude` in one rule set, `-Cursor` in another). This build uses `-Cursor` and names the conflict rather than resolving it silently.
+## Deploy
 
-## Deploy to GitHub Pages
+GitHub Pages serves the `gh-pages` branch. Rebuild and republish:
 
 ```bash
 npm run build
-# Publish the contents of dist/ to the gh-pages branch, then enable Pages for that branch in repository settings.
+git -C . worktree add /tmp/gh-pages gh-pages   # first time: orphan branch with dist contents
+cp -r dist/. /tmp/gh-pages/ && cd /tmp/gh-pages && git add -A && git commit -m "Deploy" && git push
 ```
-
-Repurposing: swap the chapter data and drawing functions and the same engine produces an alkaline electrolyzer, PEM fuel cell, or redox flow battery explainer without changing the player, timeline, or export path.
