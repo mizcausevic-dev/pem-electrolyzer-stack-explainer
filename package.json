@@ -1,0 +1,1 @@
+{"name":"pem-electrolyzer-motion-explainer","private":true,"version":"1.0.0","type":"module","description":"Code-driven 34-second anatomy motion explainer of a generic PEM electrolyzer stack","scripts":{"dev":"vite","build":"tsc && vite build","preview":"vite preview"},"devDependencies":{"typescript":"~6.0.3","vite":"^8.3.4"}}
